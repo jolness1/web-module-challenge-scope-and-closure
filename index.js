@@ -27,11 +27,14 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *    The counter is contained within the function on c1, on c2 it is globally scoped. 
+ * The scope of c1's counter means it won't be effected by other functions inadvertently. 
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ *    Counter 1, 
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *    
 */
 
 // counter1 code
@@ -45,24 +48,28 @@ function counterMaker() {
 const counter1 = counterMaker();
 
 // counter2 code
+
+
 let count = 0;
 
 function counter2() {
   return count++;
 }
 
-
+ 
 /* Task 2: inning() 
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random() * 3)
 }
 
-/* Task 3: finalScore()
+console.log(inning())
+
+
+
+  /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
 
@@ -76,12 +83,19 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning , numInnings){
+  let home = 0
+  let away = 0
+  for (let i = 1; i <= numInnings ; i++){
+      home += inning();
+      away += inning();
+}
+score = {home , away}
+return (score)
 }
 
+
+console.log(finalScore(inning , 9))
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
